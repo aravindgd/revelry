@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  resources :articles
-
-  resources :owners
-
-  resources :articles, only: [:show] do
-    get ':owner_name/articles' => 'articles#index'
-  end
-  resources :owners, only: [:index] do
-    get ':owner_name' => 'owners#show'
-  end
+  resources :articles, only: [:show]
+  get ':owner_name/articles' => 'articles#index'
+  resources :owners, only: [:index]
+  get ':owner_name' => 'owners#show'
 end
